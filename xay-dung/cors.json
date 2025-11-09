@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["https://xay-dung-sang-tran.vercel.app"],
+    "method": ["GET", "POST", "PUT", "DELETE"],
+    "maxAgeSeconds": 3600
+  }
+]

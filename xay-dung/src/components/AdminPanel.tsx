@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../config/firebase';
 
 interface Project {
@@ -18,23 +18,18 @@ interface TeamMember {
 
 interface AdminPanelProps {
   onClose: () => void;
-  onLogoUpdate: (url: string) => void;
   onProjectAdd: (project: Project) => void;
   onTeamAdd: (member: TeamMember) => void;
 }
 
 const AdminPanel: React.FC<AdminPanelProps> = ({ 
   onClose, 
-  onLogoUpdate, 
   onProjectAdd, 
   onTeamAdd 
 }) => {
-  const [activeTab, setActiveTab] = useState<'logo' | 'project' | 'team'>('logo');
+  const [activeTab, setActiveTab] = useState<'project' | 'team'>('project');
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  
-  // Logo state
-  const [logoPreview, setLogoPreview] = useState('');
   
   // Project state
   const [projectTitle, setProjectTitle] = useState('');
@@ -47,69 +42,29 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   const [memberImagePreview, setMemberImagePreview] = useState('');
 
   const uploadFile = async (file: File, path: string): Promise<string> => {
-    return new Promise((resolve, reject) => {
+    try {
       // Tạo tên file unique để tránh trùng lặp
       const fileName = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
       const storageRef = ref(storage, `${path}/${fileName}`);
       
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setUploadProgress(progress);
-          console.log('Upload progress:', progress + '%');
-        },
-        (error) => {
-          console.error('Upload error:', error);
-          setUploading(false);
-          setUploadProgress(0);
-          reject(error);
-        },
-        async () => {
-          try {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log('Upload successful, URL:', downloadURL);
-            resolve(downloadURL);
-          } catch (error) {
-            console.error('Error getting download URL:', error);
-            reject(error);
-          }
-        }
-      );
-    });
-  };
-
-  const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // Kiểm tra kích thước file (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Kích thước file không được vượt quá 5MB');
-      return;
-    }
-
-    // Kiểm tra loại file
-    if (!file.type.startsWith('image/')) {
-      alert('Vui lòng chọn file ảnh');
-      return;
-    }
-
-    setUploading(true);
-    try {
-      console.log('Starting logo upload...');
-      const url = await uploadFile(file, 'logos');
-      setLogoPreview(url);
-      onLogoUpdate(url);
-      alert('Logo đã được upload thành công!');
+      console.log('Starting upload...', fileName);
+      setUploadProgress(50); // Giả lập progress
+      
+      // Upload file
+      const snapshot = await uploadBytes(storageRef, file);
+      console.log('Upload successful');
+      
+      // Get download URL
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log('Download URL:', downloadURL);
+      
+      setUploadProgress(100);
+      return downloadURL;
     } catch (error) {
-      console.error('Logo upload error:', error);
-      alert('Lỗi khi upload logo. Vui lòng thử lại sau.');
-    } finally {
+      console.error('Upload error:', error);
       setUploading(false);
       setUploadProgress(0);
+      throw error;
     }
   };
 
@@ -223,12 +178,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
         
         <div style={styles.tabs}>
           <button 
-            onClick={() => setActiveTab('logo')} 
-            style={activeTab === 'logo' ? styles.activeTab : styles.tab}
-          >
-            Logo
-          </button>
-          <button 
             onClick={() => setActiveTab('project')} 
             style={activeTab === 'project' ? styles.activeTab : styles.tab}
           >
@@ -241,27 +190,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             Đội ngũ
           </button>
         </div>
-
-        {activeTab === 'logo' && (
-          <div style={styles.tabContent}>
-            <h3>Upload Logo</h3>
-            <div className="file-input-wrapper">
-              <input 
-                type="file" 
-                id="logo-upload" 
-                accept="image/*" 
-                onChange={handleLogoUpload}
-                disabled={uploading}
-              />
-              <label htmlFor="logo-upload" className="file-input-label">
-                {uploading ? `Đang upload... ${uploadProgress.toFixed(0)}%` : 'Chọn file logo'}
-              </label>
-            </div>
-            {logoPreview && (
-              <img src={logoPreview} alt="Logo preview" className="preview-image" />
-            )}
-          </div>
-        )}
 
         {activeTab === 'project' && (
           <div style={styles.tabContent}>

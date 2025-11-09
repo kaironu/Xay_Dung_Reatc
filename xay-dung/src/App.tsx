@@ -30,7 +30,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [logo, setLogo] = useState('');
   const [projects, setProjects] = useState<Project[]>([
     {
       id: '1',
@@ -95,10 +94,6 @@ function App() {
     }
   };
 
-  const handleLogoUpdate = (url: string) => {
-    setLogo(url);
-  };
-
   const handleProjectAdd = (project: Project) => {
     setProjects([...projects, project]);
   };
@@ -110,7 +105,6 @@ function App() {
   return (
     <div className="App">
       <Header
-        logo={logo}
         isLoggedIn={isLoggedIn}
         onLoginClick={() => setShowLoginModal(true)}
         onAdminClick={() => setShowAdminPanel(true)}
@@ -133,7 +127,6 @@ function App() {
       {showAdminPanel && (
         <AdminPanel
           onClose={() => setShowAdminPanel(false)}
-          onLogoUpdate={handleLogoUpdate}
           onProjectAdd={handleProjectAdd}
           onTeamAdd={handleTeamAdd}
         />
