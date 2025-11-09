@@ -38,13 +38,16 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
         
         <div style={styles.rightSection}>
           <nav style={styles.nav}>
-            <a href="#home" style={styles.navLink} className="nav-item">Trang chủ</a>
-            <a href="#services" style={styles.navLink} className="nav-item desktop-only">Dịch vụ</a>
-            <a href="#projects" style={styles.navLink} className="nav-item desktop-only">Dự án</a>
-            <a href="#team" style={styles.navLink} className="nav-item desktop-only">Đội ngũ</a>
-            <a href="#contact" style={styles.navLink} className="nav-item">Liên hệ</a>
+            {/* Desktop Menu - Hiện đầy đủ trên desktop */}
+            <div className="desktop-menu" style={styles.desktopMenu}>
+              <a href="#home" style={styles.navLink}>Trang chủ</a>
+              <a href="#services" style={styles.navLink}>Dịch vụ</a>
+              <a href="#projects" style={styles.navLink}>Dự án</a>
+              <a href="#team" style={styles.navLink}>Đội ngũ</a>
+              <a href="#contact" style={styles.navLink}>Liên hệ</a>
+            </div>
             
-            {/* Mobile Menu Icon */}
+            {/* Mobile Menu Icon - Chỉ hiện trên mobile */}
             <button 
               style={styles.mobileMenuIcon}
               className="mobile-menu-icon"
@@ -53,12 +56,14 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
               ☰
             </button>
             
-            {/* Mobile Menu Dropdown */}
+            {/* Mobile Menu Dropdown - Chứa tất cả 5 items */}
             {showMobileMenu && (
               <div style={styles.mobileMenuDropdown} className="mobile-menu-dropdown">
+                <a href="#home" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Trang chủ</a>
                 <a href="#services" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Dịch vụ</a>
                 <a href="#projects" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Dự án</a>
                 <a href="#team" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Đội ngũ</a>
+                <a href="#contact" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Liên hệ</a>
               </div>
             )}
           </nav>
@@ -214,6 +219,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: '2rem',
     alignItems: 'center',
     position: 'relative',
+  },
+  desktopMenu: {
+    display: 'flex',
+    gap: '2rem',
+    alignItems: 'center',
   },
   mobileMenuIcon: {
     display: 'none',

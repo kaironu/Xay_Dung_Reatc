@@ -40,23 +40,23 @@ body {
   }
 }
 
-/* Desktop menu items */
-.desktop-only {
-  display: block;
+/* Desktop menu - hiện trên desktop, ẩn trên mobile */
+.desktop-menu {
+  display: flex;
 }
 
-/* Mobile menu icon - chỉ hiện trên mobile */
+/* Mobile menu icon - ẩn trên desktop, hiện trên mobile */
 .mobile-menu-icon {
   display: none !important;
 }
 
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none !important; /* Ẩn Dịch vụ, Dự án, Đội ngũ trên mobile */
+  .desktop-menu {
+    display: none !important; /* Ẩn toàn bộ desktop menu */
   }
   
   .mobile-menu-icon {
-    display: block !important; /* Hiện hamburger menu trên mobile */
+    display: block !important; /* Hiện hamburger menu icon */
   }
 }
 
@@ -72,8 +72,6 @@ body {
 /* Header responsive for mobile */
 @media (max-width: 768px) {
   .headerContainer .container {
-    flex-direction: row !important; /* Giữ hàng ngang trên tablet */
-    gap: 1rem !important;
     padding: 0.5rem !important;
   }
   
