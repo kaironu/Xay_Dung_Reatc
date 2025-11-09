@@ -45,6 +45,10 @@ body {
   transform: scale(1.02);
 }
 
+.logoContainer:hover .logoIcon {
+  transform: rotate(5deg) scale(1.05);
+}
+
 .logoContainer:active {
   transform: scale(0.98);
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from '../assets/logo-sang-tran.png';
 
 interface HeaderProps {
   isLoggedIn: boolean;
@@ -22,9 +23,10 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
       <div style={styles.container}>
         <div style={styles.logoContainer} onClick={handleLogoClick} className="logoContainer">
           <img 
-            src="/logo-sang-tran.png" 
+            src={logoImage} 
             alt="Sang Trần Construction Logo" 
             style={styles.logo} 
+            className="logoIcon"
           />
           <div style={styles.logoTextContainer}>
             <h1 style={styles.logoText}>Sang Trần</h1>
@@ -99,8 +101,22 @@ const styles: { [key: string]: React.CSSProperties } = {
     cursor: 'pointer',
     transition: 'transform 0.3s ease',
   },
+  logoIcon: {
+    width: '60px',
+    height: '60px',
+    background: 'linear-gradient(45deg, #00bcd4, #2196f3)',
+    borderRadius: '12px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: 'white',
+    boxShadow: '0 4px 15px rgba(0, 188, 212, 0.3)',
+    transition: 'transform 0.3s ease',
+  },
   logo: {
-    height: '100px',
+    height: '70px',
     width: 'auto',
     transition: 'transform 0.3s ease',
   },
