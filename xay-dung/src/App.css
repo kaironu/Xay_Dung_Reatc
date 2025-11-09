@@ -40,163 +40,6 @@ body {
   }
 }
 
-/* Desktop menu - hiện trên desktop, ẩn trên mobile */
-.desktop-menu {
-  display: flex;
-}
-
-/* Mobile menu icon - ẩn trên desktop, hiện trên mobile */
-.mobile-menu-icon {
-  display: none !important;
-}
-
-@media (max-width: 768px) {
-  .desktop-menu {
-    display: none !important; /* Ẩn toàn bộ desktop menu */
-  }
-  
-  .mobile-menu-icon {
-    display: block !important; /* Hiện hamburger menu icon */
-  }
-}
-
-/* Mobile menu dropdown hover effects */
-.mobile-menu-dropdown a:hover {
-  color: #ff6b35 !important;
-}
-
-.mobile-menu-dropdown a:last-child {
-  border-bottom: none !important;
-}
-
-/* Header responsive for mobile */
-@media (max-width: 768px) {
-  .headerContainer .container {
-    padding: 0.5rem !important;
-  }
-  
-  .headerContainer .rightSection {
-    gap: 0.5rem !important;
-    flex-wrap: nowrap !important;
-  }
-  
-  .hotlineContainer {
-    padding: 0.5rem 0.8rem !important;
-  }
-  
-  .hotlineContainer .hotlineIcon {
-    font-size: 1.2rem !important;
-    margin-right: 0.5rem !important;
-  }
-  
-  .hotlineContainer .hotlineLabel {
-    font-size: 0.55rem !important;
-  }
-  
-  .hotlineContainer .hotlineNumber {
-    font-size: 0.8rem !important;
-    letter-spacing: 0.3px !important;
-  }
-  
-  .headerContainer .authContainer {
-    gap: 5px !important;
-  }
-  
-  .headerContainer button {
-    padding: 0.4rem 0.8rem !important;
-    font-size: 0.75rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .headerContainer .container {
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    padding: 0.4rem 0.25rem !important;
-  }
-  
-  .headerContainer .rightSection {
-    gap: 0.5rem !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-  }
-  
-  .headerContainer nav {
-    gap: 1rem !important;
-    order: 1 !important;
-  }
-  
-  .headerContainer nav a {
-    font-size: 0.75rem !important;
-  }
-  
-  .hotlineContainer {
-    padding: 0.3rem 0.6rem !important;
-    order: 2 !important;
-  }
-  
-  .headerContainer .authContainer {
-    order: 3 !important;
-  }
-  
-  .headerContainer .logoContainer {
-    gap: 0.4rem !important;
-    justify-content: center !important;
-  }
-  
-  .headerContainer .logoContainer img {
-    height: 45px !important;
-  }
-  
-  .headerContainer .logoText {
-    font-size: 0.9rem !important;
-  }
-  
-  .headerContainer .logoSubtext {
-    font-size: 0.55rem !important;
-  }
-  
-  .hotlineContainer .hotlineLabel {
-    display: none !important;
-  }
-  
-  .hotlineContainer .hotlineNumber {
-    font-size: 0.75rem !important;
-  }
-  
-  .headerContainer button {
-    padding: 0.3rem 0.5rem !important;
-    font-size: 0.65rem !important;
-  }
-}
-
-/* Logo animations - đơn giản và nhẹ nhàng */
-.logoContainer:hover {
-  transform: scale(1.02);
-}
-
-.logoContainer:hover .logoIcon {
-  transform: rotate(5deg) scale(1.05);
-}
-
-.logoContainer:active {
-  transform: scale(0.98);
-}
-
-/* Navigation links hover animation */
-.headerContainer nav a:hover {
-  transform: translateY(-2px);
-  color: #ff6b35 !important;
-  text-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-}
-
-/* Auth buttons hover animation */
-.headerContainer button:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* Hotline animations */
 @keyframes pulse {
   0% {
     box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
@@ -224,10 +67,176 @@ body {
   }
 }
 
-/* Hotline hover effect */
+/* Desktop menu */
+.desktop-menu {
+  display: flex;
+}
+
+.mobile-menu-icon {
+  display: none !important;
+}
+
+/* Mobile menu dropdown hover */
+.mobile-menu-dropdown a:hover {
+  color: #ff6b35 !important;
+}
+
+.mobile-menu-dropdown a:last-child {
+  border-bottom: none !important;
+}
+
+/* Logo animations */
+.logoContainer:hover {
+  transform: scale(1.02);
+}
+
+.logoContainer:hover .logoIcon {
+  transform: scale(1.05);
+}
+
+/* Navigation hover */
+.headerContainer nav a:hover {
+  color: #ff6b35 !important;
+}
+
+/* Auth buttons hover */
+.headerContainer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Hotline hover */
 .hotlineContainer:hover {
-  transform: scale(1.1) !important;
-  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Hotline animations - giữ nguyên */
+.hotlineContainer {
+  animation: pulse 2s infinite !important;
+}
+
+.hotlineContainer .hotlineIcon {
+  animation: bounce 1s infinite !important;
+}
+
+/* MOBILE RESPONSIVE - Quan trọng nhất */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none !important;
+  }
+  
+  .mobile-menu-icon {
+    display: block !important;
+  }
+  
+  /* Header container */
+  .headerContainer .container {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Logo */
+  .headerContainer .logoContainer {
+    gap: 0.5rem !important;
+  }
+  
+  .headerContainer .logoContainer img {
+    height: 50px !important;
+  }
+  
+  .headerContainer .logoText {
+    font-size: 1rem !important;
+  }
+  
+  .headerContainer .logoSubtext {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Right section - QUAN TRỌNG */
+  .headerContainer .rightSection {
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Hotline */
+  .hotlineContainer {
+    padding: 0.4rem 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+  
+  .hotlineContainer .hotlineIcon {
+    font-size: 1.1rem !important;
+  }
+  
+  .hotlineContainer .hotlineLabel {
+    font-size: 0.55rem !important;
+  }
+  
+  .hotlineContainer .hotlineNumber {
+    font-size: 0.75rem !important;
+    letter-spacing: 0px !important;
+  }
+  
+  /* Auth buttons */
+  .headerContainer .authContainer {
+    gap: 0.4rem !important;
+  }
+  
+  .headerContainer button {
+    padding: 0.4rem 0.7rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* MOBILE NHỎ - Dưới 480px */
+@media (max-width: 480px) {
+  .headerContainer .container {
+    padding: 0.5rem !important;
+  }
+  
+  /* Logo nhỏ hơn */
+  .headerContainer .logoContainer img {
+    height: 45px !important;
+  }
+  
+  .headerContainer .logoText {
+    font-size: 0.9rem !important;
+  }
+  
+  .headerContainer .logoSubtext {
+    font-size: 0.6rem !important;
+    letter-spacing: 1px !important;
+  }
+  
+  /* Hotline gọn hơn */
+  .hotlineContainer {
+    padding: 0.35rem 0.6rem !important;
+  }
+  
+  .hotlineContainer .hotlineIcon {
+    font-size: 1rem !important;
+  }
+  
+  .hotlineContainer .hotlineLabel {
+    font-size: 0.5rem !important;
+  }
+  
+  .hotlineContainer .hotlineNumber {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Buttons nhỏ hơn */
+  .headerContainer button {
+    padding: 0.35rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  /* Mobile menu icon */
+  .mobile-menu-icon {
+    font-size: 1.3rem !important;
+    padding: 0.4rem !important;
+  }
 }
 
 /* Modal Styles */
@@ -321,43 +330,6 @@ body {
   cursor: not-allowed;
 }
 
-/* File Input Styles */
-.file-input-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-.file-input-wrapper input[type=file] {
-  position: absolute;
-  left: -9999px;
-}
-
-.file-input-label {
-  display: block;
-  padding: 0.8rem;
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.3s;
-}
-
-.file-input-label:hover {
-  background: #e9ecef;
-}
-
-/* Preview Image */
-.preview-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-}
-
 /* Hover Effects */
 .card:hover {
   transform: translateY(-5px);
@@ -368,37 +340,11 @@ body {
   transform: translateY(-3px);
 }
 
-.navLink:hover {
-  color: #ff6b35 !important;
-}
-
-.loginBtn:hover,
-.adminBtn:hover,
-.logoutBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.ctaBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6) !important;
-}
-
-.submitBtn:hover {
-  background: #e55a2b !important;
-  transform: translateY(-2px);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .modal-content {
     margin: 1rem;
     padding: 1.5rem;
-  }
-  
-  .nav {
-    flex-direction: column;
-    gap: 1rem !important;
   }
   
   .contactGrid {
@@ -415,19 +361,5 @@ body {
   
   .subtitle {
     font-size: 1rem !important;
-  }
-  
-  /* Hotline responsive */
-  .hotlineContainer {
-    padding: 0.6rem 1rem !important;
-    margin: 0 0.5rem;
-  }
-  
-  .hotlineContainer .hotlineLabel {
-    font-size: 0.6rem !important;
-  }
-  
-  .hotlineContainer .hotlineNumber {
-    font-size: 0.9rem !important;
   }
 }

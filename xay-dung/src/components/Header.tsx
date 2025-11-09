@@ -13,7 +13,6 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
   
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Navigate to home section
     const homeSection = document.getElementById('home');
     if (homeSection) {
       homeSection.scrollIntoView({ behavior: 'smooth' });
@@ -36,9 +35,9 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
           </div>
         </div>
         
-        <div style={styles.rightSection}>
+        <div style={styles.rightSection} className="rightSection">
           <nav style={styles.nav}>
-            {/* Desktop Menu - Hiện đầy đủ trên desktop */}
+            {/* Desktop Menu */}
             <div className="desktop-menu" style={styles.desktopMenu}>
               <a href="#home" style={styles.navLink}>Trang chủ</a>
               <a href="#services" style={styles.navLink}>Dịch vụ</a>
@@ -47,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
               <a href="#contact" style={styles.navLink}>Liên hệ</a>
             </div>
             
-            {/* Mobile Menu Icon - Chỉ hiện trên mobile */}
+            {/* Mobile Menu Icon */}
             <button 
               style={styles.mobileMenuIcon}
               className="mobile-menu-icon"
@@ -56,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
               ☰
             </button>
             
-            {/* Mobile Menu Dropdown - Chứa tất cả 5 items */}
+            {/* Mobile Menu Dropdown */}
             {showMobileMenu && (
               <div style={styles.mobileMenuDropdown} className="mobile-menu-dropdown">
                 <a href="#home" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Trang chủ</a>
@@ -68,31 +67,28 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
             )}
           </nav>
 
-          {/* Hotline nổi bật */}
-          <div style={styles.hotlineContainer} className="hotlineContainer">
+          {/* Hotline */}
+          <a href="tel:0867471642" style={styles.hotlineContainer} className="hotlineContainer">
             <div style={styles.hotlineIcon}>📞</div>
             <div style={styles.hotlineInfo}>
-              <span style={styles.hotlineLabel}>Hotline 24/7</span>
-              <a href="tel:0867471642" style={styles.hotlineNumber}>
-                086-7471-642
-              </a>
+              <span style={styles.hotlineNumber}>0867471642</span>
             </div>
-          </div>
+          </a>
 
-          {/* Nút đăng nhập/admin - Đặt cuối cùng */}
-          <div style={styles.authContainer}>
+          {/* Auth buttons */}
+          <div style={styles.authContainer} className="authContainer">
             {isLoggedIn ? (
               <>
                 <button onClick={onAdminClick} style={styles.adminBtn}>
-                  Admin Panel
+                  Admin
                 </button>
                 <button onClick={onLogout} style={styles.logoutBtn}>
-                  Đăng xuất
+                  Thoát
                 </button>
               </>
             ) : (
               <button onClick={onLoginClick} style={styles.loginBtn}>
-                Đăng nhập
+                Login
               </button>
             )}
           </div>
@@ -105,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
 const styles: { [key: string]: React.CSSProperties } = {
   header: {
     background: 'linear-gradient(135deg, #004e89 0%, #002d50 100%)',
-    padding: '0.5rem 0',
+    padding: '0.75rem 0',
     position: 'sticky',
     top: 0,
     zIndex: 100,
@@ -114,36 +110,22 @@ const styles: { [key: string]: React.CSSProperties } = {
   container: {
     maxWidth: '1400px',
     margin: '0 auto',
-    padding: '0 0.5rem',
+    padding: '0 1rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexWrap: 'wrap',
-    minHeight: '60px',
+    gap: '1rem',
   },
   logoContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '1rem',
+    gap: '0.75rem',
     cursor: 'pointer',
     transition: 'transform 0.3s ease',
-  },
-  logoIcon: {
-    width: '60px',
-    height: '60px',
-    background: 'linear-gradient(45deg, #00bcd4, #2196f3)',
-    borderRadius: '12px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: 'white',
-    boxShadow: '0 4px 15px rgba(0, 188, 212, 0.3)',
-    transition: 'transform 0.3s ease',
+    flexShrink: 0,
   },
   logo: {
-    height: '80px',
+    height: '60px',
     width: 'auto',
     transition: 'transform 0.3s ease',
   },
@@ -154,75 +136,34 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   logoText: {
     color: 'white',
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     fontWeight: 'bold',
     margin: 0,
-    lineHeight: 1,
+    lineHeight: 1.2,
   },
   logoSubtext: {
     color: '#87CEEB',
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
     fontWeight: '500',
     margin: 0,
     lineHeight: 1,
     textTransform: 'uppercase' as const,
-    letterSpacing: '2px',
+    letterSpacing: '1.5px',
   },
   rightSection: {
     display: 'flex',
     alignItems: 'center',
-    gap: '2rem',
-    flex: 1,
-    justifyContent: 'flex-end',
-    flexWrap: 'wrap',
-  },
-  // Hotline styles với animation nổi bật
-  hotlineContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    background: 'linear-gradient(45deg, #ff6b35, #ff8c42)',
-    padding: '0.8rem 1.5rem',
-    borderRadius: '50px',
-    boxShadow: '0 4px 20px rgba(255, 107, 53, 0.4)',
-    animation: 'pulse 2s infinite',
-    cursor: 'pointer',
-    transition: 'transform 0.3s ease',
-  },
-  hotlineIcon: {
-    fontSize: '1.5rem',
-    marginRight: '0.8rem',
-    animation: 'bounce 1s infinite',
-  },
-  hotlineInfo: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  hotlineLabel: {
-    color: 'white',
-    fontSize: '0.7rem',
-    fontWeight: '500',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-    marginBottom: '0.2rem',
-  },
-  hotlineNumber: {
-    color: 'white',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    textDecoration: 'none',
-    letterSpacing: '1px',
-    transition: 'color 0.3s',
+    gap: '0.75rem',
+    flexShrink: 0,
   },
   nav: {
     display: 'flex',
-    gap: '2rem',
     alignItems: 'center',
-    position: 'relative',
+    position: 'relative' as const,
   },
   desktopMenu: {
     display: 'flex',
-    gap: '2rem',
+    gap: '1.5rem',
     alignItems: 'center',
   },
   mobileMenuIcon: {
@@ -235,7 +176,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '0.5rem',
   },
   mobileMenuDropdown: {
-    position: 'absolute',
+    position: 'absolute' as const,
     top: '100%',
     right: 0,
     background: 'linear-gradient(135deg, #004e89 0%, #002d50 100%)',
@@ -244,6 +185,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '1rem',
     minWidth: '150px',
     zIndex: 1000,
+    marginTop: '0.5rem',
   },
   mobileMenuItem: {
     display: 'block',
@@ -258,43 +200,83 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: 'white',
     textDecoration: 'none',
     fontWeight: '500',
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     transition: 'color 0.3s',
+    whiteSpace: 'nowrap' as const,
+  },
+  hotlineContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    background: 'linear-gradient(45deg, #ff6b35, #ff8c42)',
+    padding: '0.5rem 1rem',
+    borderRadius: '50px',
+    boxShadow: '0 4px 20px rgba(255, 107, 53, 0.4)',
+    cursor: 'pointer',
+    transition: 'transform 0.3s ease',
+    textDecoration: 'none',
+    flexShrink: 0,
+    gap: '0.5rem',
+    animation: 'pulse 2s infinite',
+  },
+  hotlineIcon: {
+    fontSize: '1.2rem',
+    animation: 'bounce 1s infinite',
+  },
+  hotlineInfo: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    alignItems: 'flex-start',
+    lineHeight: 1,
+  },
+  hotlineNumber: {
+    color: 'white',
+    fontSize: '0.9rem',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    letterSpacing: '1px',
+    whiteSpace: 'nowrap' as const,
   },
   authContainer: {
     display: 'flex',
     alignItems: 'center',
-    gap: '10px'
+    gap: '0.5rem',
+    flexShrink: 0,
   },
   loginBtn: {
     background: '#ff6b35',
     color: 'white',
     border: 'none',
-    padding: '0.5rem 1.5rem',
+    padding: '0.5rem 1rem',
     borderRadius: '6px',
     cursor: 'pointer',
     fontWeight: '600',
+    fontSize: '0.85rem',
     transition: 'background 0.3s',
+    whiteSpace: 'nowrap' as const,
   },
   adminBtn: {
     background: '#28a745',
     color: 'white',
     border: 'none',
-    padding: '0.5rem 1.5rem',
+    padding: '0.5rem 0.75rem',
     borderRadius: '6px',
     cursor: 'pointer',
     fontWeight: '600',
+    fontSize: '0.8rem',
     transition: 'background 0.3s',
+    whiteSpace: 'nowrap' as const,
   },
   logoutBtn: {
     background: '#dc3545',
     color: 'white',
     border: 'none',
-    padding: '0.5rem 1.5rem',
+    padding: '0.5rem 0.75rem',
     borderRadius: '6px',
     cursor: 'pointer',
     fontWeight: '600',
+    fontSize: '0.8rem',
     transition: 'background 0.3s',
+    whiteSpace: 'nowrap' as const,
   },
 };
 
