@@ -76,19 +76,35 @@ body {
   }
   
   .headerContainer .rightSection {
-    gap: 1rem !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
   }
   
   .hotlineContainer {
-    padding: 0.4rem 0.8rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  
+  .hotlineContainer .hotlineIcon {
+    font-size: 1.2rem !important;
+    margin-right: 0.5rem !important;
   }
   
   .hotlineContainer .hotlineLabel {
-    font-size: 0.6rem !important;
+    font-size: 0.55rem !important;
   }
   
   .hotlineContainer .hotlineNumber {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.3px !important;
+  }
+  
+  .headerContainer .authContainer {
+    gap: 5px !important;
+  }
+  
+  .headerContainer button {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
