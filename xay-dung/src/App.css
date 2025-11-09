@@ -40,6 +40,85 @@ body {
   }
 }
 
+/* Header responsive for mobile */
+@media (max-width: 768px) {
+  .headerContainer .rightSection {
+    gap: 1rem !important;
+  }
+  
+  .headerContainer nav {
+    gap: 1rem !important;
+  }
+  
+  .nav-hide-mobile {
+    display: none !important; /* Ẩn Dịch vụ, Dự án, Đội ngũ trên mobile */
+  }
+  
+  .hotlineContainer {
+    padding: 0.5rem 1rem !important;
+  }
+  
+  .hotlineContainer .hotlineLabel {
+    font-size: 0.6rem !important;
+  }
+  
+  .hotlineContainer .hotlineNumber {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer .container {
+    padding: 0 0.25rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .headerContainer .rightSection {
+    gap: 0.75rem !important;
+  }
+  
+  .headerContainer .logoContainer {
+    gap: 0.5rem !important;
+  }
+  
+  .headerContainer .logoContainer img {
+    height: 50px !important;
+  }
+  
+  .headerContainer .logoText {
+    font-size: 1rem !important;
+  }
+  
+  .headerContainer .logoSubtext {
+    font-size: 0.6rem !important;
+  }
+  
+  .headerContainer nav {
+    gap: 0.75rem !important;
+  }
+  
+  .headerContainer nav a {
+    font-size: 0.8rem !important;
+  }
+  
+  .hotlineContainer {
+    padding: 0.3rem 0.6rem !important;
+  }
+  
+  .hotlineContainer .hotlineLabel {
+    display: none !important; /* Ẩn text "Hotline 24/7" */
+  }
+  
+  .hotlineContainer .hotlineNumber {
+    font-size: 0.8rem !important;
+  }
+  
+  .headerContainer button {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
 /* Logo animations - đơn giản và nhẹ nhàng */
 .logoContainer:hover {
   transform: scale(1.02);

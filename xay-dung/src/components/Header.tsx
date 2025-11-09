@@ -36,11 +36,11 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
         
         <div style={styles.rightSection}>
           <nav style={styles.nav}>
-            <a href="#home" style={styles.navLink}>Trang chủ</a>
-            <a href="#services" style={styles.navLink}>Dịch vụ</a>
-            <a href="#projects" style={styles.navLink}>Dự án</a>
-            <a href="#team" style={styles.navLink}>Đội ngũ</a>
-            <a href="#contact" style={styles.navLink}>Liên hệ</a>
+            <a href="#home" style={styles.navLink} className="nav-item">Trang chủ</a>
+            <a href="#services" style={styles.navLink} className="nav-item nav-hide-mobile">Dịch vụ</a>
+            <a href="#projects" style={styles.navLink} className="nav-item nav-hide-mobile">Dự án</a>
+            <a href="#team" style={styles.navLink} className="nav-item nav-hide-mobile">Đội ngũ</a>
+            <a href="#contact" style={styles.navLink} className="nav-item">Liên hệ</a>
           </nav>
 
           {/* Hotline nổi bật */}
@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
             <div style={styles.hotlineInfo}>
               <span style={styles.hotlineLabel}>Hotline 24/7</span>
               <a href="tel:0867471642" style={styles.hotlineNumber}>
-                0867-471-642
+                086-7471-642
               </a>
             </div>
           </div>
@@ -93,6 +93,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    minHeight: '60px',
   },
   logoContainer: {
     display: 'flex',
@@ -147,6 +149,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: '2rem',
     flex: 1,
     justifyContent: 'flex-end',
+    flexWrap: 'wrap',
   },
   // Hotline styles với animation nổi bật
   hotlineContainer: {
