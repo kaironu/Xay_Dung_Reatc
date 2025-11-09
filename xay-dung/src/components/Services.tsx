@@ -4,30 +4,33 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: '🏗️',
-      title: 'Thi công xây dựng',
-      description: 'Thi công các công trình dân dụng, công nghiệp với đội ngũ chuyên nghiệp',
+      title: 'Xây dựng nhà dân dụng Bình Thuận',
+      description: 'Thi công xây dựng nhà ở, biệt thự tại Bình Thuận với chất lượng cao, tiến độ nhanh chóng',
     },
     {
       icon: '📐',
-      title: 'Thiết kế kiến trúc',
-      description: 'Thiết kế kiến trúc hiện đại, tối ưu công năng và thẩm mỹ',
+      title: 'Thiết kế kiến trúc Phan Thiết',
+      description: 'Thiết kế kiến trúc hiện đại phù hợp khí hậu Bình Thuận, tối ưu công năng và thẩm mỹ',
     },
     {
       icon: '🔧',
-      title: 'Sửa chữa & Cải tạo',
-      description: 'Sửa chữa, cải tạo nhà cũ, nâng cấp công trình',
+      title: 'Sửa chữa nhà Bình Thuận',
+      description: 'Dịch vụ sửa chữa, cải tạo nhà cũ tại Bình Thuận, nâng cấp công trình chuyên nghiệp',
     },
     {
       icon: '📋',
-      title: 'Tư vấn dự án',
-      description: 'Tư vấn giải pháp xây dựng tối ưu chi phí và thời gian',
+      title: 'Tư vấn xây dựng miễn phí',
+      description: 'Tư vấn miễn phí giải pháp xây dựng tại Bình Thuận, báo giá chi tiết, hỗ trợ khách hàng 24/7',
     },
   ];
 
   return (
     <section id="services" style={styles.section}>
       <div style={styles.container}>
-        <h2 style={styles.sectionTitle}>Dịch Vụ Của Chúng Tôi</h2>
+        <h2 style={styles.sectionTitle}>Dịch Vụ Xây Dựng Bình Thuận</h2>
+        <p style={styles.subtitle}>
+          Sang Trần Construction cung cấp đa dạng dịch vụ xây dựng tại Bình Thuận, Phan Thiết và các huyện lân cận
+        </p>
         <div style={styles.grid}>
           {services.map((service, index) => (
             <div key={index} style={styles.card}>
@@ -55,8 +58,16 @@ const styles: { [key: string]: React.CSSProperties } = {
   sectionTitle: {
     fontSize: '2.5rem',
     textAlign: 'center',
-    marginBottom: '3rem',
+    marginBottom: '1rem',
     color: '#004e89',
+  },
+  subtitle: {
+    fontSize: '1.1rem',
+    textAlign: 'center',
+    marginBottom: '3rem',
+    color: '#666',
+    maxWidth: '800px',
+    margin: '0 auto 3rem auto',
   },
   grid: {
     display: 'grid',

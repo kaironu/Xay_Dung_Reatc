@@ -5,11 +5,11 @@ const Hero: React.FC = () => {
     <section id="home" style={styles.hero}>
       <div style={styles.overlay}>
         <div style={styles.content}>
-          <h1 style={styles.title}>Xây Dựng Tương Lai Cùng Sang Trần</h1>
+          <h1 style={styles.title}>Xây Dựng Bình Thuận - Sang Trần Construction</h1>
           <p style={styles.subtitle}>
-            Chuyên thiết kế và thi công các công trình dân dụng, công nghiệp với chất lượng hàng đầu
+            Công ty xây dựng uy tín tại Bình Thuận chuyên thiết kế và thi công nhà dân dụng, biệt thự, công trình công nghiệp. Phục vụ khách hàng tại Phan Thiết, La Gi, Hàm Thuận Nam và toàn tỉnh Bình Thuận.
           </p>
-          <button style={styles.ctaBtn}>Liên hệ ngay</button>
+          <button style={styles.ctaBtn}>Tư vấn miễn phí</button>
         </div>
       </div>
     </section>
