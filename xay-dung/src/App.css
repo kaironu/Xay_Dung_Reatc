@@ -42,20 +42,29 @@ body {
 
 /* Header responsive for mobile */
 @media (max-width: 768px) {
-  .headerContainer .rightSection {
+  .headerContainer .container {
+    flex-direction: column !important;
     gap: 1rem !important;
+    padding: 0.5rem !important;
   }
   
-  .headerContainer nav {
+  .headerContainer .rightSection {
+    width: 100% !important;
+    justify-content: center !important;
     gap: 1rem !important;
+    order: -1 !important; /* Đưa rightSection lên trên */
+  }
+  
+  .headerContainer .logoContainer {
+    order: 1 !important; /* Đưa logo xuống dưới */
   }
   
   .nav-hide-mobile {
-    display: none !important; /* Ẩn Dịch vụ, Dự án, Đội ngũ trên mobile */
+    display: none !important;
   }
   
   .hotlineContainer {
-    padding: 0.5rem 1rem !important;
+    padding: 0.4rem 0.8rem !important;
   }
   
   .hotlineContainer .hotlineLabel {
@@ -63,59 +72,69 @@ body {
   }
   
   .hotlineContainer .hotlineNumber {
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .headerContainer .container {
-    padding: 0 0.25rem !important;
-    gap: 0.5rem !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    padding: 0.4rem 0.25rem !important;
   }
   
   .headerContainer .rightSection {
-    gap: 0.75rem !important;
-  }
-  
-  .headerContainer .logoContainer {
     gap: 0.5rem !important;
-  }
-  
-  .headerContainer .logoContainer img {
-    height: 50px !important;
-  }
-  
-  .headerContainer .logoText {
-    font-size: 1rem !important;
-  }
-  
-  .headerContainer .logoSubtext {
-    font-size: 0.6rem !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
   }
   
   .headerContainer nav {
-    gap: 0.75rem !important;
+    gap: 1rem !important;
+    order: 1 !important;
   }
   
   .headerContainer nav a {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
   }
   
   .hotlineContainer {
     padding: 0.3rem 0.6rem !important;
+    order: 2 !important;
+  }
+  
+  .headerContainer .authContainer {
+    order: 3 !important;
+  }
+  
+  .headerContainer .logoContainer {
+    gap: 0.4rem !important;
+    justify-content: center !important;
+  }
+  
+  .headerContainer .logoContainer img {
+    height: 45px !important;
+  }
+  
+  .headerContainer .logoText {
+    font-size: 0.9rem !important;
+  }
+  
+  .headerContainer .logoSubtext {
+    font-size: 0.55rem !important;
   }
   
   .hotlineContainer .hotlineLabel {
-    display: none !important; /* Ẩn text "Hotline 24/7" */
+    display: none !important;
   }
   
   .hotlineContainer .hotlineNumber {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
   }
   
   .headerContainer button {
-    padding: 0.3rem 0.6rem !important;
-    font-size: 0.7rem !important;
+    padding: 0.3rem 0.5rem !important;
+    font-size: 0.65rem !important;
   }
 }
 
