@@ -40,27 +40,45 @@ body {
   }
 }
 
+/* Desktop menu items */
+.desktop-only {
+  display: block;
+}
+
+/* Mobile menu icon - chỉ hiện trên mobile */
+.mobile-menu-icon {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important; /* Ẩn Dịch vụ, Dự án, Đội ngũ trên mobile */
+  }
+  
+  .mobile-menu-icon {
+    display: block !important; /* Hiện hamburger menu trên mobile */
+  }
+}
+
+/* Mobile menu dropdown hover effects */
+.mobile-menu-dropdown a:hover {
+  color: #ff6b35 !important;
+}
+
+.mobile-menu-dropdown a:last-child {
+  border-bottom: none !important;
+}
+
 /* Header responsive for mobile */
 @media (max-width: 768px) {
   .headerContainer .container {
-    flex-direction: column !important;
+    flex-direction: row !important; /* Giữ hàng ngang trên tablet */
     gap: 1rem !important;
     padding: 0.5rem !important;
   }
   
   .headerContainer .rightSection {
-    width: 100% !important;
-    justify-content: center !important;
     gap: 1rem !important;
-    order: -1 !important; /* Đưa rightSection lên trên */
-  }
-  
-  .headerContainer .logoContainer {
-    order: 1 !important; /* Đưa logo xuống dưới */
-  }
-  
-  .nav-hide-mobile {
-    display: none !important;
   }
   
   .hotlineContainer {

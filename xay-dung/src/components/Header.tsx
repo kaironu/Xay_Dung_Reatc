@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logoImage from '../assets/logo-sang-tran.png';
 
 interface HeaderProps {
@@ -9,6 +9,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick, onLogout }) => {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Navigate to home section
@@ -37,10 +39,28 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick, onAdminClick,
         <div style={styles.rightSection}>
           <nav style={styles.nav}>
             <a href="#home" style={styles.navLink} className="nav-item">Trang chủ</a>
-            <a href="#services" style={styles.navLink} className="nav-item nav-hide-mobile">Dịch vụ</a>
-            <a href="#projects" style={styles.navLink} className="nav-item nav-hide-mobile">Dự án</a>
-            <a href="#team" style={styles.navLink} className="nav-item nav-hide-mobile">Đội ngũ</a>
+            <a href="#services" style={styles.navLink} className="nav-item desktop-only">Dịch vụ</a>
+            <a href="#projects" style={styles.navLink} className="nav-item desktop-only">Dự án</a>
+            <a href="#team" style={styles.navLink} className="nav-item desktop-only">Đội ngũ</a>
             <a href="#contact" style={styles.navLink} className="nav-item">Liên hệ</a>
+            
+            {/* Mobile Menu Icon */}
+            <button 
+              style={styles.mobileMenuIcon}
+              className="mobile-menu-icon"
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+            >
+              ☰
+            </button>
+            
+            {/* Mobile Menu Dropdown */}
+            {showMobileMenu && (
+              <div style={styles.mobileMenuDropdown} className="mobile-menu-dropdown">
+                <a href="#services" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Dịch vụ</a>
+                <a href="#projects" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Dự án</a>
+                <a href="#team" style={styles.mobileMenuItem} onClick={() => setShowMobileMenu(false)}>Đội ngũ</a>
+              </div>
+            )}
           </nav>
 
           {/* Hotline nổi bật */}
@@ -193,6 +213,36 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: 'flex',
     gap: '2rem',
     alignItems: 'center',
+    position: 'relative',
+  },
+  mobileMenuIcon: {
+    display: 'none',
+    background: 'transparent',
+    border: 'none',
+    color: 'white',
+    fontSize: '1.5rem',
+    cursor: 'pointer',
+    padding: '0.5rem',
+  },
+  mobileMenuDropdown: {
+    position: 'absolute',
+    top: '100%',
+    right: 0,
+    background: 'linear-gradient(135deg, #004e89 0%, #002d50 100%)',
+    borderRadius: '8px',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+    padding: '1rem',
+    minWidth: '150px',
+    zIndex: 1000,
+  },
+  mobileMenuItem: {
+    display: 'block',
+    color: 'white',
+    textDecoration: 'none',
+    padding: '0.5rem 0',
+    borderBottom: '1px solid rgba(255,255,255,0.1)',
+    fontSize: '0.9rem',
+    transition: 'color 0.3s',
   },
   navLink: {
     color: 'white',
