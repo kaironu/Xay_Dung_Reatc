@@ -116,7 +116,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     transition: 'transform 0.3s ease',
   },
   logo: {
-    height: '70px',
+    height: '80px',
     width: 'auto',
     transition: 'transform 0.3s ease',
   },
@@ -127,14 +127,14 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   logoText: {
     color: 'white',
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
     fontWeight: 'bold',
     margin: 0,
     lineHeight: 1,
   },
   logoSubtext: {
     color: '#87CEEB',
-    fontSize: '0.9rem',
+    fontSize: '0.75rem',
     fontWeight: '500',
     margin: 0,
     lineHeight: 1,
